@@ -18,14 +18,11 @@ services:
     build:
       context: ./tomcat
       dockerfile: Dockerfile
-    env_file:
-      - ./tomcat/tomcat.env
     ports:
       - "9443:8080"
     container_name: tomcat-web
     volumes:
-      - "/mnt/c/devops_project/tomcat_volume/webapps/:/usr/local/tomcat/webapps/"
-     #- "/mnt/c/devops_project/tomcat_volume/configuration/:/usr/local/tomcat/conf"
+      - "/mnt/c/devops_project/tomcat_volume/webapps/:/usr/local/tomcat/webapps.dist/"
     networks:
       - app-network
   
@@ -34,5 +31,3 @@ networks:
   app-network:
     driver: bridge
 
-#volumes:
-   #vol_jenkins_tomcat:

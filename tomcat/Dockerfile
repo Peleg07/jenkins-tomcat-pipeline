@@ -1,9 +1,13 @@
 FROM tomcat:latest
 
-COPY ./webapp/app.war /usr/local/tomcat/webapps/
-COPY context.xml /usr/local/tomcat/conf/Catalina/localhost/
-COPY context.xml /usr/local/tomcat/webapps.dist/manager/META-INF/
-COPY context.xml /usr/local/tomcat/webapps.dist/host-manager/META-INF/
+ARG TOMCAT_PASSWORD
+ARG TOMCAT_USERNAME
+
+RUN mv /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps/
+COPY ./webapp/ /usr/local/tomcat/webapps/
 COPY tomcat-users.xml /usr/local/tomcat/conf/
+COPY context.xml /usr/local/tomcat/conf/
+COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
+COPY context.xml /usr/local/tomcat/webapps/host-manager/META-INF/
 
 CMD ["catalina.sh", "run"]
