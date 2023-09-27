@@ -21,3 +21,6 @@ docker-compose build
 docker-compose ps
 docker-compose up
 
+# Return only HTTP STATUS CODE
+curl -s -w "%{http_code}\n" -o /dev/null tomcat-web:8080/app/app.jsp
+
