@@ -9,6 +9,7 @@ services:
     container_name: jenkins
     volumes:
       - "/mnt/c/devops_project/jenkins_volume/:/var/jenkins_home"
+      - "/var/tmp:/mnt/c/devops_project/tomcat_volume/"
     env_file:
       - ./jenkins/jenkins.env
     networks:
@@ -22,7 +23,7 @@ services:
       - "9443:8080"
     container_name: tomcat-web
     volumes:
-      - "/mnt/c/devops_project/tomcat_volume/webapps/:/usr/local/tomcat/webapps.dist/"
+      - "/mnt/c/devops_project/tomcat_volume/:/usr/local/tomcat/webapps/"
     networks:
       - app-network
   
