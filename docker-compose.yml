@@ -9,7 +9,7 @@ services:
     container_name: jenkins
     volumes:
       - "/mnt/c/devops_project/jenkins_volume/:/var/jenkins_home"
-      - "/var/tmp:/mnt/c/devops_project/tomcat_volume/"
+      - "/mnt/c/devops_project/tomcat_volume/:var/tmp"
     env_file:
       - ./jenkins/jenkins.env
     networks:
